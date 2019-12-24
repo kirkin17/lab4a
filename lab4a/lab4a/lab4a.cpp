@@ -20,7 +20,7 @@ int main()
 		for (int j = -5 + i * 5; j < 6 + 5 * (i - 1); j++) 
 		{
 			if (arr[j] > 0) m += arr[j];
-			else if (arr[j] == 0) l++;
+			if (arr[j] == 0) l++;
 		}
 		if (m > k) 
 		{
