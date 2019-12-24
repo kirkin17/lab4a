@@ -50,6 +50,7 @@ int main()
 	if (n == 4)
 		for (int i = 15; i < 20; i++)
 			cout << a[i] << " ";
+	cout << endl;
 
 
 	for (int i = 0; i < 20 - 1; i++)
