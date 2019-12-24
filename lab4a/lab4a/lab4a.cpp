@@ -3,25 +3,65 @@ using namespace std;
 
 int main()
 {
-	setlocale(1, "Russian");
-	int A[20];
-	int max = 0;
-	int nom = 0;
-	int sum = 0;
+	setlocale(LC_ALL, "");
+	int m, l, k, c, a, b;
+	k = c = a = b = m = l = 0;
+	int arr[20];
 
-	cout << "Введите 20 элементов массива:\n";
-	for (int i = 1; i <= 20; i++)
+	cout << "Введите 20 чисел\n";
+	for (int i = 0; i < 20; i++) 
 	{
-		cin >> A[i];
-//		A[i] = 1 + rand() % 10;
+		cout << i + 1 << ": ";
+		cin >> arr[i];
 	}
-	for (int i = 1; i <= 20; i++)
+
+	for (int i = 1; i < 5; i++)
 	{
-		for (int k = 1; k <= 5; k++)
+		for (int j = -5 + i * 5; j < 6 + 5 * (i - 1); j++) 
 		{
-			sum += A[i];
+			if (arr[j] > 0) m += arr[j];
+			else if (arr[j] == 0) l++;
 		}
-		if (sum > max) { nom++; };
+		if (m > k) 
+		{
+			k = m;
+			b = i;
+		}
+		if (l > c) 
+		{
+			c = l;
+			a = i;
+		}
+		m = l = 0;
 	}
-	cout << "Номер пятерки, в которой сумма элементов больше всех: " << nom << "\n";
+
+	cout << "Сумма полож. максимальна в " << b << "-й пятерке. ";
+	cout << "Больше всего нулей в: ";
+
+	if (a == 1)
+		for (int i = 0; i < 5; i++)
+			cout << arr[i] << " ";
+	if (a == 2)
+		for (int i = 5; i < 10; i++)
+			cout << arr[i] << " ";
+	if (a == 3)
+		for (int i = 10; i < 15; i++)
+			cout << arr[i] << " ";
+	if (a == 4)
+		for (int i = 15; i < 20; i++)
+			cout << arr[i] << " ";
+
+	for (int i = 0; i < 20 - 1; i++)
+		for (int j = i + 1; j < 20; j++)
+			if (arr[j] < arr[i])
+			{
+				int r = arr[j];
+				arr[j] = arr[i];
+				arr[i] = r;
+			}
+	cout << "В порядке возрастания: ";
+	for (int i = 0; i < 20; i++)
+		cout << arr[i] << " ";
+
+	return 0;
 }
